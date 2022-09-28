@@ -15,7 +15,8 @@ public class FallRegistrationRequirements implements IRaceValidation
         Document requiredDoc = new Document("Fall Registration");
 
         return runners.stream()
-            .filter(runner -> runner.getDocuments().contains(requiredDoc))
+            .filter(runner -> runner.getDocuments().contains(requiredDoc) &&
+                              runner.getDocuments().contains(requiredDoc))
             .collect(Collectors.toSet());
     }
 }

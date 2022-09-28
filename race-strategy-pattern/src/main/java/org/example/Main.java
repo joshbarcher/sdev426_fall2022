@@ -4,6 +4,7 @@ import org.example.entities.Document;
 import org.example.entities.Runner;
 import org.example.race.Race;
 import org.example.strategy.validation.FallRegistrationRequirements;
+import org.example.strategy.validation.WinterRegistrationRequirements;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -34,8 +35,21 @@ public class Main
         Arrays.stream(runners).forEach(fallCostumeRace::register);
 
         fallCostumeRace.raceDay();
+        System.out.println();
+
+        //creating a second race with a different registration (strategy) - winter registration,
+        //liability waiver - DON'T CHANGE THE RACE CLASS!
+
+        Race winterRace = new Race("Winter Race", LocalDate.of(2022, 12, 25),
+                                   new WinterRegistrationRequirements());
+        Arrays.stream(runners).forEach(winterRace::register);
+        winterRace.raceDay();
     }
 }
+
+
+
+
 
 
 

@@ -46,9 +46,16 @@ public class Race
         runners.stream().forEach(System.out::println);
         System.out.println();
 
-        //simulate the race
-        Runner winner = waitForWinner();
-        System.out.println(winner.getName() + " won the race!");
+        if (runners.isEmpty())
+        {
+            System.out.println("Nobody is ready to run!");
+        }
+        else
+        {
+            //simulate the race
+            Runner winner = waitForWinner();
+            System.out.println(winner.getName() + " won the race!");
+        }
     }
 
     public Runner waitForWinner()
