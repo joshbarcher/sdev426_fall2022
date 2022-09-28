@@ -2,6 +2,8 @@ package org.example.race;
 
 import lombok.Data;
 import org.example.entities.Runner;
+import org.example.strategy.validation.FallRegistrationRequirements;
+import org.example.strategy.validation.IRaceValidation;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -14,11 +16,13 @@ public class Race
     private String name;
     private LocalDate dayOfRace;
     private Set<Runner> runners = new HashSet<>();
+    private IRaceValidation validation;
 
-    public Race(String name, LocalDate dayOfRace)
+    public Race(String name, LocalDate dayOfRace, IRaceValidation validation)
     {
         this.name = name;
         this.dayOfRace = dayOfRace;
+        this.validation = validation;
     }
 
     //add a runner to the race, we'll validate them later
@@ -37,7 +41,10 @@ public class Race
         System.out.println();
 
         //make sure everyone can run
-        //TODO add validation as a strategy!
+        runners = validation.filterRunners(runners);
+        System.out.println("Ready to run today:");
+        runners.stream().forEach(System.out::println);
+        System.out.println();
 
         //simulate the race
         Runner winner = waitForWinner();

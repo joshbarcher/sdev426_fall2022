@@ -4,6 +4,7 @@ import org.example.entities.Document;
 import org.example.entities.Runner;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FallRegistrationRequirements implements IRaceValidation
 {
@@ -11,9 +12,10 @@ public class FallRegistrationRequirements implements IRaceValidation
     public Set<Runner> filterRunners(Set<Runner> runners)
     {
         //required doc(s)
-        Document document = new Document("Fall Registration");
+        Document requiredDoc = new Document("Fall Registration");
 
-        //TODO filter later...
-        return null;
+        return runners.stream()
+            .filter(runner -> runner.getDocuments().contains(requiredDoc))
+            .collect(Collectors.toSet());
     }
 }

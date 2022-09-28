@@ -3,6 +3,7 @@ package org.example;
 import org.example.entities.Document;
 import org.example.entities.Runner;
 import org.example.race.Race;
+import org.example.strategy.validation.FallRegistrationRequirements;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -26,7 +27,8 @@ public class Main
         };
 
         //create a race
-        Race fallCostumeRace = new Race("Fall Costume Bonanza", LocalDate.of(2022, 10, 31));
+        Race fallCostumeRace = new Race("Fall Costume Bonanza", LocalDate.of(2022, 10, 31),
+                                        new FallRegistrationRequirements());
 
         //turn the runners into a stream and register each of them
         Arrays.stream(runners).forEach(fallCostumeRace::register);
