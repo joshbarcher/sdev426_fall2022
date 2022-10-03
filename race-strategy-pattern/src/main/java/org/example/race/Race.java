@@ -2,6 +2,7 @@ package org.example.race;
 
 import lombok.Data;
 import org.example.entities.Runner;
+import org.example.strategy.rewards.IRaceRewards;
 import org.example.strategy.validation.FallRegistrationRequirements;
 import org.example.strategy.validation.IRaceValidation;
 
