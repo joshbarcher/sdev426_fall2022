@@ -1,0 +1,4 @@
+server.port=9000
+spring.banner.location=banner.txt
+spring.banner.charset=UTF-8
+logging.pattern.console=%clr(%-5p) %clr(%-40.40logger{0}){blue} %clr(:){faint} %clr(%m){faint}%n
