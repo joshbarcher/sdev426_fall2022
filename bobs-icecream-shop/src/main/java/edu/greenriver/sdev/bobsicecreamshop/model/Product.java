@@ -1,17 +1,20 @@
 package edu.greenriver.sdev.bobsicecreamshop.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="items")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product
 {
     @Id
-    private String name;
+    private String productName;
     private double price;
 
     @Column(name="type")
@@ -20,4 +23,9 @@ public class Product
     private LocalDate expires;
 
     private String details;
+
+    //an optional brand
+    @OneToOne(mappedBy = "product")
+    @ToString.Exclude
+    private Brand brand;
 }
