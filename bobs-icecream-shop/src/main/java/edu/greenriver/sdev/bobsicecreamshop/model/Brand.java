@@ -13,10 +13,10 @@ import javax.persistence.*;
 public class Brand
 {
     @Id
-    private String brandName;
+    private String name;
     private String parentCompany;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "productName")
     @ToString.Exclude //prevent infinite recursion with this and the product class
     private Product product;

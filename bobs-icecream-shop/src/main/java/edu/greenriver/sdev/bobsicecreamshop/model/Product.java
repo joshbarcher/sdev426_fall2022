@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="items")
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class Product
 {
     @Id
-    private String productName;
+    private String name;
     private double price;
 
     @Column(name="type")
@@ -25,7 +26,7 @@ public class Product
     private String details;
 
     //an optional brand
-    @OneToOne(mappedBy = "product")
+    @OneToMany(mappedBy = "product")
     @ToString.Exclude
-    private Brand brand;
+    private List<Brand> brand;
 }

@@ -11,6 +11,6 @@ public interface IProductRepo extends JpaRepository<Product, String>
 {
     //select * from products where price > compare
     List<Product> findProductsByPriceGreaterThan(double compare);
-    Product findByProductName(String productName);
+    Product findByName(String productName);
     Product findFirstByPrice(double price);
 }
