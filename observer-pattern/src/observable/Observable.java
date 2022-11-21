@@ -33,7 +33,15 @@ public abstract class Observable
     {
         for (IObserver observer : observers)
         {
-            observer.update();
+            observer.update(this, null);
+        }
+    }
+
+    public void notifyObservers(Object param)
+    {
+        for (IObserver observer : observers)
+        {
+            observer.update(this, param);
         }
     }
 }

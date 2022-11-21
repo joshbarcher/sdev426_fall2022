@@ -30,6 +30,12 @@ public class WildernessAnimal extends Observable
         System.out.println("The animal (" + type + ") did something!");
 
         //this is from the parent class
-        notifyObservers();
+        notifyObservers(actionMessage);
+    }
+
+    @Override
+    public String toString()
+    {
+        return type + "located at " + location;
     }
 }
